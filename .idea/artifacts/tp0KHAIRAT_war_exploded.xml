@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="tp0KHAIRAT:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tp0KHAIRAT_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="tp0KHAIRAT/web/Web" />
+    </root>
+  </artifact>
+</component>
