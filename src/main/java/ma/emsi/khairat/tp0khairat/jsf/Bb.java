@@ -121,6 +121,16 @@ public class Bb implements Serializable {
             facesContext.addMessage(null, message);
             return null;
         }
+
+        // === Mon TRAITEMENT PERSONNEL : inversion de mots ===
+        String[] mots = question.trim().split("\\s+");
+        StringBuilder inverse = new StringBuilder();
+        for (int i = mots.length - 1; i >= 0; i--) {
+            inverse.append(mots[i]).append(" ");
+        }
+        String resultatInverse = inverse.toString().trim();
+
+
         // Entourer la réponse avec "||".
         this.reponse = "||";
         // Si la conversation n'a pas encore commencé, ajouter le rôle système au début de la réponse
@@ -130,7 +140,7 @@ public class Bb implements Serializable {
             // Invalide le bouton pour changer le rôle système
             this.roleSystemeChangeable = false;
         }
-        this.reponse += question.toLowerCase(Locale.FRENCH) + "||";
+        this.reponse += "Le message inversé est : " +  " || "  + resultatInverse.toUpperCase(Locale.FRENCH) + " ||";
         // La conversation contient l'historique des questions-réponses depuis le début.
         afficherConversation();
         return null;
@@ -182,6 +192,10 @@ public class Bb implements Serializable {
                     are you tell them the average price of a meal.
                     """;
             this.listeRolesSysteme.add(new SelectItem(role, "Guide touristique"));
+
+            role ="Je suis developpeur informatique comment je peux vous aider ?";
+            this.listeRolesSysteme.add(new SelectItem(role, "Mouhcine KHAIRAT"));
+
         }
 
         return this.listeRolesSysteme;
